@@ -10,8 +10,9 @@ public  class Tool{
     public static String mode="normal";
 
     public static String filePath="ser.bin";
+    public static String baseFilepath="base64ser.bin";
     public static void serialize(Object object) throws Exception {
-        FileOutputStream fileOutputStream=new FileOutputStream(new File(filePath));
+        FileOutputStream fileOutputStream=new FileOutputStream(filePath);
         ObjectOutputStream objectOutputStream=new ObjectOutputStream(fileOutputStream);
         if(mode.equals("normal")){
             objectOutputStream.writeObject(object);
@@ -23,7 +24,7 @@ public  class Tool{
             objectOut.flush();
             byte[] byteArray =byteArrayOut.toByteArray();
             String base64String=Base64.getEncoder().encodeToString(byteArray);
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(baseFilepath))) {
                 // 将Base64字符串写入文件
                 writer.write(base64String);
                 System.out.println("序列化成功");
@@ -37,13 +38,13 @@ public  class Tool{
 
     public static Object unserialize() throws Exception {
         if (mode.equals("normal")) {
-            FileInputStream fileInputStream=new FileInputStream(new File(filePath));
+            FileInputStream fileInputStream=new FileInputStream(filePath);
             ObjectInputStream objectInputStream=new ObjectInputStream(fileInputStream);
             Object obj=objectInputStream.readObject();
             System.out.println("反序列化成功");
             return obj;
         } else if (mode.equals("base64")) {
-            String base64String = new String(Files.readAllBytes(Paths.get(filePath)));
+            String base64String = new String(Files.readAllBytes(Paths.get(baseFilepath)));
             byte[] byteArray = Base64.getDecoder().decode(base64String);
             ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(byteArray));
             Object obj = objectInputStream.readObject();

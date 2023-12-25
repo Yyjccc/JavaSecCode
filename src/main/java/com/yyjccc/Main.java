@@ -1,13 +1,22 @@
 package com.yyjccc;
 
-import com.yyjccc.CommonsExp.Cc1;
+import com.yyjccc.CommonsExp.*;
 import com.yyjccc.Utils.Tool;
 
-// 按两次 Shift 打开“随处搜索”对话框并输入 `show whitespaces`，
-// 然后按 Enter 键。现在，您可以在代码中看到空格字符。
+
 public class Main {
     public static void main(String[] args) throws Exception {
-       // Cc1.cc1_1();
+        //设置为base64输出
+        Tool.mode="base64";
+        //Cc1.cc1_1();
+        //Cc1.cc1_2();
+        //Cc6.cc6();
+       // Cc3.cc3_1();
+        //Cc3.cc3_2();
+        //Cc4.cc4();
+       // Cc2.Cc2();
+        //Cc5.cc5();
+        Cc7.cc7();
         Tool.unserialize();
     }
 }
