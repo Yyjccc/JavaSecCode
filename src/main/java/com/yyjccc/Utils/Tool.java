@@ -12,9 +12,10 @@ public  class Tool{
     public static String filePath="ser.bin";
     public static String baseFilepath="base64ser.bin";
     public static void serialize(Object object) throws Exception {
-        FileOutputStream fileOutputStream=new FileOutputStream(filePath);
-        ObjectOutputStream objectOutputStream=new ObjectOutputStream(fileOutputStream);
+
         if(mode.equals("normal")){
+            FileOutputStream fileOutputStream=new FileOutputStream(filePath);
+            ObjectOutputStream objectOutputStream=new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(object);
             System.out.println("序列化成功");
         } else if (mode.equals("base64")) {
