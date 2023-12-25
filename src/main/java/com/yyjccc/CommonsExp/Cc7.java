@@ -7,7 +7,7 @@ import org.apache.commons.collections.functors.ConstantTransformer;
 import org.apache.commons.collections.functors.InvokerTransformer;
 import org.apache.commons.collections.map.LazyMap;
 
-import java.io.IOException;
+
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Hashtable;
